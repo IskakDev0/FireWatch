@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.avg-columns{
+    @apply w-50 h-20 bg-white shadow-sm flex items-center justify-center rounded-[10px]
+}
