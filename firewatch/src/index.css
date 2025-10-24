@@ -3,3 +3,10 @@
 .avg-columns{
     @apply w-50 h-20 bg-white shadow-sm flex items-center justify-center rounded-[10px]
 }
+
+.modal-stylesText{
+    @apply m-0 p-[10px] text-[#2c3e50] text-[18px]
+}
+.modal-stylesInput{
+    @apply ml-[10px] p-[1px] text-[#2c3e50] text-[15px] border-1 rounded-[5px]
+}

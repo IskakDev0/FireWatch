@@ -1,16 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiCloseLine } from "react-icons/ri";
+import "../index.css"
 
 function Modal({ setIsOpen }){
+
     return (
         <>
-            <div onClick={() => setIsOpen(false)} className="bg-[rgba(0, 0, 0, 0.2)] w-[100vw] h-[100dvh] z-0 top-[50%] left-[50%] transform-[translate(-50%, -50%) absolute"></div>
-            <div className="fixed top-[50%] left-[50%] transform-[translate(-50%, -50%)]">
-                <div className="w-[250px] h-[170px] bg-white-500 text-white z-10 rounded-[10px]">
-                    <div className="h-[50px] bg-white-500 overflow-hidden">
-                        <h5 className="m-0 p-[10px] text-[#2c3e50] text-[18px] align-center">Dialog</h5>
+            <div onClick={() => setIsOpen(false)} className="bg-[rgba(0,0,0,0.5)] w-screen h-screen z-10 fixed top-0 left-0"></div>
+            <div className="fixed top-[50%] left-[50%] bg-white -translate-x-1/2 -translate-y-1/2 z-11 rounded-[10px] overflow-auto">
+                <div className="w-[800px] h-[500px] text-white rounded-[10px]">
+                    <div className="h-[50px] rounded bg-white">
+                        <h5 className="modal-stylesText">Add New Data</h5>
                     </div>
-                    <button onClick={() => setIsOpen(false)} className="absolute right-0 top-0 self-end mt-[-7px] mr-[-7px] pointer p-[4px 8px] rounded-[10px] border-none text-[18px] text-[#2c3e50] bg-white-500">
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the three first letters of the Month here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: jan" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the three first letters of the Day here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: mon" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the Temperature here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: 10.0" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the RH (relative humididty) here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: 50" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the Wind here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: 5.0" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input the Rain here:</h1>
+                        <input className="modal-stylesInput" placeholder="Ex: 0" type="text" />
+                    </div>
+                    <div className="">
+                        <h1 className="modal-stylesText">Input Area here:</h1>
+                        <input className="modal-stylesInput mb-[10px]" placeholder="Ex: 0" type="text" />
+                    </div>
+                    <button onClick={() => setIsOpen(false)} className="absolute right-0 top-0 self-end mt-1 mr-1 pointer p-[4px 8px] rounded-[10px] border-none text-[30px] cursor-pointer text-[#2c3e50] bg-white-500">
                         <RiCloseLine style={{ marginBottom: "-3px" }} />
                     </button>
                 </div>

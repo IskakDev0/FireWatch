@@ -51,12 +51,4 @@ export default function ParseData(){
     }, [fires]);
 
     return { averageFires, averageTemp, averageArea, fires};
-    
-    const filteredFires = fires.filter(fire => {
-        const monthMatch = monthFilter ? fire.month === monthFilter : true;
-        const dayMatch = dayFilter ? fire.day === dayFilter : true;
-        return monthMatch && dayMatch;
-    });
-
-    return filteredFires;
 }

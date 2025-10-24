@@ -1,6 +1,5 @@
 // src/components/FireDataLoader.jsx
 import { useEffect, useState } from "react";
-import Papa from "papaparse";
 import useFiresData from '../components/Logic/ParseData';
 
 export default function FireDataLoader() {
@@ -12,41 +11,12 @@ export default function FireDataLoader() {
 
     const [entriesStart, setEntriesStart] = useState(0);
     const [entries, setEntries] = useState(10);
-//   const [newEntry, setNewEntry] = useState({
-//     month: "",
-//     day: "",
-//     temp: "",
-//     RH: "",
-//     wind: "",
-//     rain: "",
-//     area: ""
-//   });
 
     const filteredFires = fires.filter(fire => {
         const monthMatch = monthFilter ? fire.month === monthFilter : true;
         const dayMatch = dayFilter ? fire.day === dayFilter : true;
         return monthMatch && dayMatch;
     });
-
-  // Add new entry (persist + refresh state)
-//   const handleAdd = () => {
-//     if (!newEntry.month || !newEntry.day) return alert("Month and Day required");
-
-//     const entry = {
-//       month: newEntry.month.toLowerCase(),
-//       day: newEntry.day.toLowerCase(),
-//       temp: parseFloat(newEntry.temp) || 0,
-//       RH: parseFloat(newEntry.RH) || 0,
-//       wind: parseFloat(newEntry.wind) || 0,
-//       rain: parseFloat(newEntry.rain) || 0,
-//       area: parseFloat(newEntry.area) || 0,
-//     };
-
-//     const updated = [...fires, entry];
-//     setFires(updated);
-//     localStorage.setItem("fires", JSON.stringify(updated));
-//     setNewEntry({ month: "", day: "", temp: "", RH: "", wind: "", rain: "", area: "" });
-//   };
 
     function incrementByTen() {
         setEntriesStart((prev) => prev + 10);
@@ -114,26 +84,6 @@ export default function FireDataLoader() {
             </div>
         </div>
         <div className="p-6">
-
-            {/* Add new entry form */}
-            {/* <div className="grid grid-cols-7 gap-2 mb-6">
-                {Object.keys(newEntry).map((key) => (
-                <input
-                    key={key}
-                    placeholder={key}
-                    value={newEntry[key]}
-                    onChange={(e) => setNewEntry({ ...newEntry, [key]: e.target.value })}
-                    className="border rounded-lg p-2 text-sm focus:ring-2 focus:ring-orange-400"
-                />
-                ))}
-            </div> */}
-            {/* <button
-                onClick={handleAdd}
-                className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition"
-            >
-                Add Entry
-            </button> */}
-
             <div className="mt-8 rounded-lg border border-gray-200 shadow-sm">
                 <div className="grid grid-cols-7 bg-orange-100 font-semibold text-gray-800 p-2 border-b">
                 <div>Month</div>
