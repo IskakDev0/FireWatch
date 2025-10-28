@@ -8,7 +8,8 @@ export default function AddDataModal(){
         <>
             <div className="">
                 <button onClick={() => setIsOpen(true)} className='text-white bg-orange-300 rounded-[7px] p-2 cursor-pointer transition-all duration-300 ease-in-out hover:scale-105'>
-                    Add New Data
+                    <span className="hidden md:inline">Save New Data</span>
+                    <span className="inline md:hidden">Save</span>
                 </button>
                 {isOpen && <Modal setIsOpen={setIsOpen}/>}
             </div>
