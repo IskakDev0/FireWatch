@@ -1,4 +1,3 @@
-// src/components/FireDataLoader.jsx
 import { useEffect, useState } from "react";
 import useFiresData from '../components/Logic/ParseData';
 
@@ -85,52 +84,63 @@ export default function FireDataLoader() {
         </div>
         <div className="p-6">
             <div className="mt-8 rounded-lg border border-gray-200 shadow-sm">
-                <div className="grid grid-cols-7 bg-orange-100 font-semibold text-gray-800 p-2 border-b">
-                <div>Month</div>
-                <div>Day</div>
-                <div>Temp</div>
-                <div>RH</div>
-                <div>Wind</div>
-                <div>Rain</div>
-                <div>Area</div>
+                <div className="hidden md:grid grid-cols-7 block bg-orange-100 font-semibold text-gray-800 p-2 border-b">
+                    <div>Month</div>
+                    <div>Day</div>
+                    <div>Temp</div>
+                    <div>RH</div>
+                    <div>Wind</div>
+                    <div>Rain</div>
+                    <div>Area</div>
+                </div>
+
+                {filteredFires.slice(entriesStart, entries).map((fire, i) => (
+                <div
+                    key={i}
+                    className="grid grid-cols-2 md:grid-cols-1 p-2 border-b last:border-none hover:bg-orange-50"
+                >
+                    <div className="block text-center w-20 bg-orange-100 font-semibold text-gray-800 md:hidden">
+                        <div>Month</div>
+                        <div>Day</div>
+                        <div>Temp</div>
+                        <div>RH</div>
+                        <div>Wind</div>
+                        <div>Rain</div>
+                        <div>Area</div>
+                    </div>
+                    <div className="md:grid grid-cols-7">
+                        <div>{fire.month}</div>
+                        <div>{fire.day}</div>
+                        <div>{fire.temp}°C</div>
+                        <div>{fire.RH}%</div>
+                        <div>{fire.wind}</div>
+                        <div>{fire.rain}</div>
+                        <div>{fire.area}</div>
+                    </div>
+                </div>
+                ))}
             </div>
 
-            {filteredFires.slice(entriesStart, entries).map((fire, i) => (
-            <div
-                key={i}
-                className="grid grid-cols-7 p-2 border-b last:border-none hover:bg-orange-50"
-            >
-                <div>{fire.month}</div>
-                <div>{fire.day}</div>
-                <div>{fire.temp}°C</div>
-                <div>{fire.RH}%</div>
-                <div>{fire.wind}</div>
-                <div>{fire.rain}</div>
-                <div>{fire.area}</div>
+            <div className="flex items-center gap-5 pt-3">
+                <p className="text-sm text-gray-500">
+                    Showing {entriesStart + 1}–{Math.min(entries, filteredFires.length)} of{" "}
+                    {filteredFires.length} entries
+                </p>
+                {entries < filteredFires.length && (
+                <button
+                    onClick={incrementByTen}
+                    className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition">
+                    More Entries
+                </button>
+                )}
+                {entriesStart > 0 && (
+                <button
+                    onClick={decreaseByTen}
+                    className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition">
+                    Less Entries
+                </button>
+                )}
             </div>
-            ))}
-        </div>
-
-        <div className="flex items-center gap-5 pt-3">
-            <p className="text-sm text-gray-500">
-                Showing {entriesStart + 1}–{Math.min(entries, filteredFires.length)} of{" "}
-                {filteredFires.length} entries
-            </p>
-            {entries < filteredFires.length && (
-            <button
-                onClick={incrementByTen}
-                className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition">
-                More Entries
-            </button>
-            )}
-            {entriesStart > 0 && (
-            <button
-                onClick={decreaseByTen}
-                className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition">
-                Less Entries
-            </button>
-            )}
-        </div>
         </div>
     </>
   );

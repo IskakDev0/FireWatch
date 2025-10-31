@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react'
 import FireDataLoader from '../components/FireDataLoader'
 import AddDataModal from '../components/AddDataModal'
 import useFiresData from '../components/Logic/ParseData'
-// import './App.css'
-// import { ComposedChart, Area, Line, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart } from 'recharts'
 
 function LandingPage() {
 
@@ -19,13 +16,13 @@ function LandingPage() {
             </div>
             <div className="flex justify-center gap-10 pt-10">
               <div className="avg-columns">
-                <h2 className='text-[calc(0.6rem+1vw)]'>Avg. Temp: {averageTemp}</h2>
+                <h2 className='text-[calc(0.6rem+1vw)] text-center'>Avg. Temp: {averageTemp}</h2>
               </div>
               <div className="avg-columns">
-                <h2 className='text-[calc(0.6rem+1vw)]'>Fires: {averageFires}</h2>
+                <h2 className='text-[calc(0.6rem+1vw)] text-center'>Fires: {averageFires}</h2>
               </div>
               <div className="avg-columns">
-                <h2 className='text-[calc(0.6rem+1vw)]'>Avg. Area: {averageArea}</h2>
+                <h2 className='text-[calc(0.6rem+1vw)] text-center'>Avg. Area: {averageArea}</h2>
               </div>
             </div>
             <FireDataLoader />
